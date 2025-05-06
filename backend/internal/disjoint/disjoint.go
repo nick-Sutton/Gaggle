@@ -9,7 +9,7 @@ package disjoint
 type Node struct {
 	Data   any
 	Rank   int
-	parent *Node
+	Parent *Node
 }
 
 /*
@@ -24,7 +24,7 @@ func MakeNode(element any) *Node {
 	n := &Node{}
 	n.Data = element
 	n.Rank = 1
-	n.parent = n
+	n.Parent = n
 	return n
 }
 
@@ -82,11 +82,11 @@ func (f *DisjointForest) Find(element any) *Node {
  * return: the parent of the current node
  */
 func FindHelper(current *Node) *Node {
-	if current != current.parent {
-		current.parent = FindHelper(current.parent)
+	if current != current.Parent {
+		current.Parent = FindHelper(current.Parent)
 	}
 
-	return current.parent
+	return current.Parent
 }
 
 /*
@@ -100,9 +100,9 @@ func FindHelper(current *Node) *Node {
 func (f *DisjointForest) Union(setOne *Node, setTwo *Node) {
 	if setOne.Rank > setTwo.Rank {
 		setOne.Rank = setOne.Rank + setTwo.Rank
-		setTwo.parent = setOne
+		setTwo.Parent = setOne
 	} else {
 		setTwo.Rank = setOne.Rank + setTwo.Rank
-		setOne.parent = setTwo
+		setOne.Parent = setTwo
 	}
 }
