@@ -1,3 +1,6 @@
+// The logo package implements the function to
+// print the command line logo and credit information
+// author: Nicholas Sutton
 package logo
 
 import (
@@ -8,6 +11,8 @@ import (
 	"github.com/twistingmercury/go-figure"
 )
 
+// The PrintConsoleLogo function prints the programs logo
+// and credit information to the console
 func PrintConsoleLogo() {
 	var Reset = "\033[0m"
 	var Red = "\033[31m"
