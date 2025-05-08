@@ -8,11 +8,11 @@ package time
 type Time int
 
 const (
-	Slot_4_5pm Time = iota
-	Slot_5_6pm
-	Slot_6_7pm
-	slot_7_8pm
-	Slot_8_9pm
+	Slot_4_5pm Time = iota // 0
+	Slot_5_6pm             // 1
+	Slot_6_7pm             // 2
+	slot_7_8pm             // 3
+	Slot_8_9pm             // 4
 )
 
 /*
@@ -23,19 +23,19 @@ const (
 type Day int
 
 const (
-	Monday Day = iota
-	Tuesday
-	Wednesday
-	Thursday
-	Friday
+	Monday    Day = iota // 0
+	Tuesday              // 1
+	Wednesday            // 2
+	Thursday             // 3
+	Friday               // 4
 )
 
 /*
- * A DailyTimeSlore stores the day, a map
- * of available times, and a map of prefered times
+ * A DailyTimeSlore stores the day, the time, and the number
+ * of players available to play during that time slot
  */
-type DailyTimeSlot struct {
-	day            Day
-	AvailableTimes map[Time]bool
-	PreferredTimes map[Time]bool
+type TimeSlot struct {
+	Day              Day
+	Time             Time
+	AvailablePlayers int
 }

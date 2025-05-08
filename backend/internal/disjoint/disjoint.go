@@ -1,5 +1,6 @@
 /*
  * The disjoint package implenents the disjoint set data structure.
+ * author: Nicholas Sutton
  */
 package disjoint
 
@@ -64,7 +65,7 @@ func (f *DisjointForest) MakeSet(element any) *Node {
 }
 
 /*
- * The Find function locates a node in the forest
+ * The Find function locates a node set
  * based on its element
  *
  * param: the element to find

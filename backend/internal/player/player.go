@@ -10,7 +10,7 @@ type Player struct {
 	LastName           string
 	Email              string
 	Id                 string
-	AvailableTimeSlots map[int]time.DailyTimeSlot // day -> availability
+	AvailableTimeSlots map[time.Day]time.DailyTimeSlot // day -> availability
 	PreferedTimeSlots  []time.DailyTimeSlot
 }
 
@@ -20,7 +20,7 @@ func NewPlayer(firstName string, lastName string, email string) *Player {
 	p.LastName = lastName
 	p.Email = email
 	p.Id = uuid.NewString()
-	p.AvailableTimeSlots = make(map[int]time.DailyTimeSlot)
+	p.AvailableTimeSlots = make(map[time.Day]time.DailyTimeSlot)
 
 	return p
 }

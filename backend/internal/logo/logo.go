@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/common-nighthawk/go-figure"
+	"github.com/twistingmercury/go-figure"
 )
 
 func PrintConsoleLogo() {
@@ -23,5 +23,4 @@ func PrintConsoleLogo() {
 	fmt.Printf("%s                           %s\n", Blue+">Time:"+Reset, time.Now().Format("2006-01-02 15:04:05"))
 	fmt.Printf("%s                             %s\n", Cyan+">OS:"+Reset, runtime.GOOS)
 	fmt.Printf("%s                      Go & JavaScript\n", Green+">Languages:"+Reset)
-
 }

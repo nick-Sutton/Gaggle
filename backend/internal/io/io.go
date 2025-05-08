@@ -2,25 +2,36 @@ package io
 
 import (
 	"encoding/csv"
-	"fmt"
 	"io"
 	"log"
 	"os"
+
+	"github.com/nick-Sutton/Gaggle/backend/internal/disjoint"
+	"github.com/nick-Sutton/Gaggle/backend/internal/player"
 )
 
 func ReadCSV(inputFile *os.File) {
 	r := csv.NewReader(inputFile)
+	df := disjoint.MakeDisjointForest()
 
 	for {
 		line, err := r.Read()
 		if err == io.EOF {
 			break
 		}
+
 		if err != nil {
 			log.Fatal(err)
 		}
+		firstName := line[1]
+		lastName := line[2]
+		email := line[3]
 
-		fmt.Println(line)
+		// Add logic for getting days here
+
+		p := player.NewPlayer(firstName, lastName, email)
+		df.MakeSet(p)
+
 	}
 }
 
