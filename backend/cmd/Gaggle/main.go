@@ -18,7 +18,7 @@ func main() {
 		fmt.Println("Error opening file:", err)
         os.Exit(1)
     }
+	defer file.Close()
 
 	fmt.Println("Your file was succcessfully opened.")
-	defer file.Close()
 }
