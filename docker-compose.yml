@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: gaggle
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - APP_ENV=production
+    networks:
+      - gaggle-net
+
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: gaggle_dev
+    ports:
+      - "8081:8080"
+    volumes:
+      - .:/app
+    environment:
+      - APP_ENV=development
+    command: air -c .air.toml
+    networks:
+      - gaggle-net
+
+networks:
+  gaggle-net:
+    driver: bridge
