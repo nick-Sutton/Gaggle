@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+
 	"github.com/nick-Sutton/Gaggle/backend/internal/logo"
 )
 
@@ -14,10 +15,10 @@ func main() {
 	fmt.Scanln(&path)
 
 	file, err := os.Open(path)
-    if err != nil {
+	if err != nil {
 		fmt.Println("Error opening file:", err)
-        os.Exit(1)
-    }
+		os.Exit(1)
+	}
 	defer file.Close()
 
 	fmt.Println("Your file was succcessfully opened.")
