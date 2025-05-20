@@ -2,21 +2,21 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/nick-Sutton/Gaggle/backend/internal/logo"
-	"../../internal/routes"
+	"github.com/nick-Sutton/Gaggle/backend/internal/routes"
 )
 
 func main() {
 	logo.PrintConsoleLogo()
 
 	// setup router
-    r := routes.SetupRouter()
-    log.Println("Server listening on http://localhost:3000")
-    http.ListenAndServe(":3000", r)
+	r := routes.SetupRouter()
+	log.Println("Server listening on http://localhost:3000")
+	http.ListenAndServe(":3000", r)
 
 	// get file from user
 	var path string
