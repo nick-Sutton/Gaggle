@@ -2,21 +2,21 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
+	// "log"
+	// "net/http"
 	"os"
 
-	"github.com/nick-Sutton/Gaggle/backend/api"
+	// "github.com/nick-Sutton/Gaggle/backend/api"
 	"github.com/nick-Sutton/Gaggle/backend/internal/logo"
 )
 
 func main() {
 	logo.PrintConsoleLogo()
 
-	// setup router
-	r := api.SetupRouter()
-	log.Println("Server listening on http://localhost:3000")
-	http.ListenAndServe(":3000", r)
+	// // setup router
+	// r := api.SetupRouter()
+	// log.Println("Server listening on http://localhost:3000")
+	// http.ListenAndServe(":3000", r)
 
 	// get file from user
 	var path string
