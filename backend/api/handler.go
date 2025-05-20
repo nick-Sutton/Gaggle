@@ -1,9 +1,9 @@
-package handlers
+package api
 
 import (
-    "net/http"
+	"net/http"
 )
 
 func HelloWorld(w http.ResponseWriter, r *http.Request) {
-    w.Write([]byte("Hello, world!"))
+	w.Write([]byte("Hello, world!"))
 }

@@ -1,14 +1,13 @@
-package routes
+package api
 
 import (
 	"github.com/go-chi/chi/v5"
-	"github.com/nick-Sutton/Gaggle/backend/internal/handlers"
 )
 
 func SetupRouter() *chi.Mux {
 	r := chi.NewRouter()
 
-	r.Get("/", handlers.HelloWorld)
+	r.Get("/", HelloWorld)
 
 	return r
 }
