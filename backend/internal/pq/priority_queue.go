@@ -19,9 +19,20 @@ func NewPriorityQueue[T any](less Comparator[T]) *PriorityQueue[T] {
 	return pq
 }
 
+func NewPriorityQueueFromSlice[T any](slice []T, less Comparator[T]) *PriorityQueue[T] {
+	pq := &PriorityQueue[T]{items: slice, less: less}
+	heap.Init(pq)
+	return pq
+}
+
 func (pq *PriorityQueue[T]) Len() int           { return len(pq.items) }
 func (pq *PriorityQueue[T]) Less(i, j int) bool { return pq.less(pq.items[i], pq.items[j]) }
 func (pq *PriorityQueue[T]) Swap(i, j int)      { pq.items[i], pq.items[j] = pq.items[j], pq.items[i] }
+
+// Returns the internal slice of items
+func (pq *PriorityQueue[T]) GetItems() []T {
+	return pq.items
+}
 
 // required -- do not use
 func (pq *PriorityQueue[T]) Push(x any) {
