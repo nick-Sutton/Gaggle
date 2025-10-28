@@ -11,7 +11,9 @@ import (
 // the team will meet at.
 type Team struct {
 	Name        string
-	TeamMembers map[string]player.Player
+	TeamMembers map[string]*player.Player
+	NumMembers  int
+	MaxMembers  int
 	TimeSlot    time.TimeSlot
 }
 
@@ -19,11 +21,18 @@ type Team struct {
 // param: the team name
 // param: the teams timeslot
 // return: a pointer to the new team
-func NewTeam(name string, timeSlot time.TimeSlot) *Team {
+func NewTeam(name string, timeSlot time.TimeSlot, max int) *Team {
 	t := &Team{}
 	t.Name = name
-	t.TeamMembers = make(map[string]player.Player)
+	t.TeamMembers = make(map[string]*player.Player)
+	t.NumMembers = 0
+	t.MaxMembers = max
 	t.TimeSlot = timeSlot
 
 	return t
+}
+
+func (t *Team) AddPlayer(player *player.Player) {
+	t.TeamMembers[player.Id] = player
+	t.NumMembers++
 }
