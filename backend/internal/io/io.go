@@ -5,32 +5,57 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 
-	"github.com/nick-Sutton/Gaggle/backend/internal/disjoint"
 	"github.com/nick-Sutton/Gaggle/backend/internal/player"
 )
 
-func ReadCSV(inputFile *os.File) {
+func parsePlayerData(inputFile *os.File,
+	lowSkillBucket *player.PlayerPQ, medSkillBucket player.PlayerPQ,
+	highSkillBucket player.PlayerPQ, weekdayCount *[7]int) {
+
 	r := csv.NewReader(inputFile)
-	df := disjoint.MakeDisjointForest()
 
 	for {
+		// Get Line and err value
 		line, err := r.Read()
 		if err == io.EOF {
 			break
 		}
 
+		// Check Error Value
 		if err != nil {
 			log.Fatal(err)
 		}
+
+		// Get the current players information
 		firstName := line[1]
 		lastName := line[2]
 		email := line[3]
 
 		// Add logic for getting days here
+		
 
+		// Create a player struct for the the current player
 		p := player.NewPlayer(firstName, lastName, email)
-		df.MakeSet(p)
+		p.AvailableTimeSlots
+
+		// Set Player skill rating and add them to the corresponding PQ
+		switch strings.ToLower(line[4]) {
+		case "novice":
+			p.Skill = player.Novice
+			lowSkillBucket.Push(p)
+
+		case "intermediate":
+			p.Skill = player.Intermediate
+			medSkillBucket.Push(p)
+
+		case "experienced":
+			p.Skill = player.Experienced
+			highSkillBucket.Push(p)
+		default:
+			log.Fatal("Skill Rating Does Not Exist")
+		}
 
 	}
 }

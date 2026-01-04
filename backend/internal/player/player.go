@@ -8,6 +8,15 @@ import (
 	"github.com/nick-Sutton/Gaggle/backend/internal/time"
 )
 
+// Enum representing the three classes of skill rating for a player
+type SkillRating int
+
+const (
+	Novice SkillRating = iota
+	Intermediate
+	Experienced
+)
+
 // A Player stores the players first name, last name,
 // email, a unique Id, and a list of the players
 // available time slots.
@@ -17,6 +26,7 @@ type Player struct {
 	Email              string
 	Id                 string
 	AvailableTimeSlots []time.TimeSlot
+	Skill              SkillRating
 }
 
 // The NewPlayer function creates a player struct and returns
